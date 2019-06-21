@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <div id="app"></div>
+    <div id="appAninhado"></div>
+    <div id="appFormaRestrita"></div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+
+<script>
+    // criando h1 usando React, primeiro parametro é o tipo do objeto, segundo é a proprieade, e terceiro o texto dentro da tag.
+    var h1 = React.createElement('h1', null, 'Hello h1 React <br>');
+    
+    // codigo para renderizar o elemento criado, primeiro parametro é o elemento e segundo é aonde ele será renderizado na pagina. 
+    ReactDOM.render(h1, document.getElementById('app'));
+
+    // ELEMENTO REACT SÃO DIFERENTES DOS ELEMENTOS DOM. -> O React sabe o componente que esta sendo alterado e renderizada somente ele e não a pagina inteira.
+
+    // como trabalhar com elementos REACT aninhados ( pode ser tanto com array, quanto sem )
+    var h2 = React.createElement('h2', null, [
+        React.createElement('span', null, 'Texto h2 aninhado em REACT -- 1   '),
+        React.createElement('span', null, 'Texto h2aninhado em REACT -- 2  '),
+    ]);
+
+    ReactDOM.render(h2, document.getElementById('appAninhado'));
+
+    // Forma mais restrita de criar elementos no REACT, não possui toda a gama de elemetos como o createElement.
+    var h3 = React.DOM.h3(null, 'Texto do h1 de forma restrista');
+    ReactDOM.render(h3, document.getElementById('appFormaRestrita'));
+
+</script>
+
+</html>
