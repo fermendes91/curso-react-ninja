@@ -1,0 +1,7 @@
+__M2#A09 - TDD ___________________________________________________________________________________________________________________________________________
+
+para fazer implementação TDD sempre seguir Baby Steps
+
+deep equal testa se o valor retornado é exatamente igual se um array ou objeto é o mesmo
+
+
