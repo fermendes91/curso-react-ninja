@@ -1,0 +1,75 @@
+__M2#A03 - JEST ___________________________________________________________________________________________________________________________________________
+
+Jest -> criado pelo time do facebook logo após a criação do react, feito para testar os componentes do react... Hoje ela é uma ferramenta muito poderosa,
+    podendo ser utilizada para muita coisa.
+
+BENEFICIOS DO JEST
+    apresenta um "report" bonito e útil. Utilizando o JEST a facilidade de usar o ES6 é muito melhor. ( utilizando o babel para transpilar )
+    apresenta também integrado com ele é o code coverage "built in" ( o quanto o seu codigo esta coberto por testes )
+    apresenta um watch interativo, ou seja a cada mudança no codigo os testes são executados novamente para verificar a integridade do codigo.
+    apresenta um simulador de browser no proprio terminal com o jsdom. 
+    funciona com qualquer ferramenta de asserção.
+    consegue testar os componentes do react.
+
+
+___________________________________________________________________________________________________________________________________________________________
+__M2#A04 - JEST ___________________________________________________________________________________________________________________________________________
+
+Para a execução dos testes o JEST procura por arquivos que tenham final *.test.js, *spec.js
+ou que estejam dentro de um diretorio __tests__ 
+
+--> instalar as dependencias no projeto para utilizar o JEST
+    jest-cli (nos fornece alguns comandos para poder executar e rodar os nossos testes);
+
+--> para ajudar a fazer as asserções utilizando JEST, usamos outra dependencia para ajudar chamada CHAI.
+
+--> para que o JEST reconheça o ES6 devemos instalar as dependencias do babel.
+
+    npm i --save-dev jest-cli@15
+    npm i --save-dev chai
+    npm i --save-dev babel-core babel-jest babel-preset-es2015 babel-preset-stage-0
+
+
+
+Para este projeto estamos utilizando o modulo TDD de testes, para o TDD devemos tomar a premissa RGB...
+Red -> Primeiro escrever um teste que dê problema ( fazer dar problema )
+Green -> Fazer o teste funcionar da maneira mais simples possivel ( fazer funcionar com menor codigo )
+Blue -> Verificar se existem itens no codigo a ser melhorado ( code review para melhor o que já foi feito)
+
+___________________________________________________________________________________________________________________________________________________________
+__M2#A04 - JEST - CONHECENDO FUNÇÕES PARA TEST E ASSERÇÃO _________________________________________________________________________________________________
+
+it ou test -> tem a mesma função, o default para outras ferramentas é o IT, então por padrão definimos o IT por convenção
+    essa função recebe 2 parametros, o primeiro uma string representando o nome do teste e o segundo uma função com o codigo do teste a ser executado.
+
+describe -> Responsavel por criar um escopo pro modulo, podendo colocar varios testes dentro deste escopo.
+    essa função recebe 2 parametros, o primeiro uma string representado o nome do escopo e o segundo uma função aonde poderá ser inserido diversos IT ( casos de teste).
+
+console.assert -> função responsavel por somente printar o que esta sendo testado
+
+expect(1).toBe(1) -> função para teste no estilo BDD, uma alternativa pra ser usada ao inves do console.assert
+
+
+___________________________________________________________________________________________________________________________________________________________
+__M2#A06 - JEST - CODE COVERAGE ___________________________________________________________________________________________________________________________
+
+por padrão o JEST já contem uma ferramenta para fazer cobertura de codigo, para fazer a cobertura no comando que irá executar o teste, basta executar
+o comando "jest --coverage", conforme está definido no nosso package.json no script test
+
+ao executarmos o coverage, é criado um diretorio "coverage" para que vc possa visualizar o coverage gerado por linha de comando no BROWSER
+
+___________________________________________________________________________________________________________________________________________________________
+__M2#A06 - JEST - INTEGRAÇÃO COM ES6 ______________________________________________________________________________________________________________________
+
+Para dar suporte ao ES6 o JEST necessita da instalação de algumas dependencias 
+
+     npm i --save-dev babel-core babel-jest@15 babel-preset-es2015 babel-preset-stage-0
+
+depois de instalar essas dependencias é necessario criar um arquivo denominado ".babelrc" que conterá um objeto json para que o es6 possa ser convertido para es5
+{"presets": ["es2015", "stage-0"]}
+
+depois da instalação o JEST guarda um cache então para limpar esse cache é necessario rodar o comando
+
+npm test -- --no-cache
+
+

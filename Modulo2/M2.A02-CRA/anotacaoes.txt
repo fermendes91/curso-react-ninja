@@ -1,0 +1,15 @@
+__M2#A02 - CREATE REACT APP _______________________________________________________________________________________________________________________________
+
+Quando criamos uma aplicação usando o comando create-react-app...
+
+o projeto é configurado com live-reload e não com hot-reload, a diferença é que o live-reload atualiza a pagina inteira quando é feita qualquer alteração,
+enquanto o hot-reload atualiza somente o componente que foi alterado quando é realizada alguma alteração.
+
+npm run start -> inicializa a aplicação em um servidor;
+
+npm run build -> gera os arquivos para produção
+
+npm run test -> executa todos os testes da aplicação react.
+
+npm run eject -> vai tirar do react scripts todas a dependencia existente e jogar pro nosso projeto.
+    o package-json será todo alterado com todas as dependencias necessarias que foram usadas para rodar a aplicação usando o Create-React-App.

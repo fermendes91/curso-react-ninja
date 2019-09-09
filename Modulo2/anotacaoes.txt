@@ -1,7 +1,0 @@
-Quando criamos uma aplicação usando o comando create-react-app...
-
-o projeto é configurado com live-reload e não com hot-reload, a diferença é que o live-reload atualiza a pagina inteira quando é feita qualquer alteração,
-enquanto o hot-reload atualiza somente o componente que foi alterado quando é realizada alguma alteração.
-
-
-
