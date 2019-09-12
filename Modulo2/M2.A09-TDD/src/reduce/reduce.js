@@ -1,12 +1,5 @@
-'use strict'
+import mainReduce from './main-reduce'
 
-const reduce = (arr, func, initialValue = 0) => {
-    let acc = initialValue;
-    
-    for (let i = 0; i < arr.length; i++) {
-        acc = func(acc, arr[i]) 
-    }
-    return acc;
-}
+const reduce = mainReduce;
 
 export default reduce;
