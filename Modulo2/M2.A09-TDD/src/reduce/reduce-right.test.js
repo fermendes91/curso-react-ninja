@@ -8,7 +8,7 @@ it('reduceRight should be a function', () => {
 })
 
 it('reduceRight(["do", "nan", "Fer"], (acc, item) => acc + item, 0) should return Fernando', () => {
-    const before = reduceRight(["do", "nan", "Fer"], (acc, item) => acc + item, 0)
+    const before = reduceRight(["do", "nan", "Fer"], (acc, item) => acc + item)
     const after = "Fernando";
     expect(before).to.be.equal(after);
 })
