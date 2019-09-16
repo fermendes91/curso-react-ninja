@@ -34,3 +34,47 @@ it('map([1, 2], (item, index, array) => array) should return [[1,2], [1,2]]', ()
 it('map() should return []', () => {
     expect(map()).to.be.deep.equal([]);
 });
+
+it('map(1) should return throw a TypeError', () => {
+    let error;
+    try {
+        map(1)
+    } catch (e) {
+        error = e;
+    }
+
+    expect(error.name).to.be.equal('TypeError');
+});
+
+it('map(1) should return throw a TypeError with message "First parameter must be an array"', () => {
+    let error;
+    try {
+        map(1)
+    } catch (e) {
+        error = e;
+    }
+
+    expect(error.message).to.be.equal('First parameter must be an array');
+});
+
+it('map([1, 2], 2) should return TypeError', () => {
+    let error;
+    try {
+        map([1, 2], 2)
+    } catch (e) {
+        error = e;
+    }
+
+    expect(error.name).to.be.equal('TypeError')
+});
+
+it('map([1, 2], 2) should return throw a TypeError with message "Second parameter must be a function"', () => {
+    let error;
+    try {
+        map([1, 2], 2)
+    } catch (e) {
+        error = e;
+    }
+
+    expect(error.message).to.be.equal('Second parameter must be a function')
+});
