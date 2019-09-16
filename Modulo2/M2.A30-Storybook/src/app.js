@@ -6,7 +6,7 @@ import React from 'react'
 // esta pagina no caso é este .js chamado app.js 
 const App = React.createClass({
     render: function () {
-        return <div>Aplicação</div>
+        return <div>My App</div>
     }
 })
 

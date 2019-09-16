@@ -1,0 +1,16 @@
+O storybook é uma ferramenta para se utilizar juntamente com o REACT.
+    Ela é responsavel por criar um guia visual para os componentes do react. 
+    Serve para testar o estado dos componentes criados na aplicação de forma isolada.
+
+Para utiliza-lo basta utilizar o comando na raiz de qualquer projeto REACT.
+
+npx -p @storybook/cli sb init --type react
+
+Este comando fará toda a configuração necessaria, instalará as dependencias e atualizará
+o package.json para usar o storybook.
+
+depois de instalar... basta rodar o comando.
+
+npm run storybook
+
+a aplicação irá subir na porta 6006... e já estará disponivel para uso.
