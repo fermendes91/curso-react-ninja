@@ -1,0 +1,28 @@
+__M2#A36 - Modularizando CSS _______________________________________________________________________________________________________________________
+
+Quando modularizamos o nosso arquivo CSS, criamos um diretorio
+especifico para o arquivo search.js... 
+
+porém o arquivo search.js foi renomeado para index.js...
+
+se formos verificar o arquivo app-content.js o mesmo esta fazendo o import
+do arquivo search...
+
+porém a aplicação não quebrou porque quando fazemos o import do ./search
+primeiro a aplicação tenta verificar se existe um arquivo chamado search.js
+caso não exista... é verificado se existe um diretorio chamado search e dentro
+deste diretorio um arquivo chamado index.js...
+
+que foi o caso que implementamos nesta aula... por isso a aplicação não queboru.
+
+__M2#A37 - CSS Modules _______________________________________________________________________________________________________________________
+
+
+A ideia do CSS Modules é utilizar o CSS de forma local, utilizar o css sem ficar nomeando as coisas
+
+A ideia é poder utilizar nomes para classes de CSS sem se preocupar com o escopo global
+o CSS Modules é configurado atraves do loader de css somente colocando um '?modules'
+ao lado da string css...
+
+Ao rodar a aplicação toda a classe css da aplicação terá uma 'hash' como identificador
+... assim poderemos utilizar nossas classes sem se preocupar com o escopo.
