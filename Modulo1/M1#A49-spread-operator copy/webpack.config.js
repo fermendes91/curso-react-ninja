@@ -4,10 +4,6 @@ const path = require('path')
 const webpack = require('webpack')
 const validate = require('webpack-validator')
 
-const HtmlPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-
 // __dirname é uma variavel global do node, o path.join vai fazer a junção desses 3 itens para funcionar em qualquer SO
 // precisa de uma entrada e uma saida, o webpack esta configurado para ler da entry e jogar no output com o nome 'bundle.js'
 
@@ -35,20 +31,13 @@ module.exports = validate ({
         'webpack/hot/only-dev-server',
         path.join(__dirname, 'src', 'index'),
     ],
-
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name]-[hash].js',
-        publicPath: ''
+        filename: 'bundle.js',
+        publicPath: '/dist/'
     },
-
     plugins: [
-        new webpack.HotModuleReplacementPlugin(), // com isto a magica do hot-load consegue ser executada
-        new ExtractTextPlugin('style.css'),
-        new HtmlPlugin({
-            title: 'GitHub App',
-            template: path.join(__dirname, 'src', 'html', 'template.html')
-        })
+        new webpack.HotModuleReplacementPlugin() // com isto a magica do hot-load consegue ser executada
     ],
     module: {
         preLoaders: [{
@@ -61,13 +50,7 @@ module.exports = validate ({
             test: /\.js$/, 
             exclude: /node_modules/,
             include: /src/,
-            loader: 'babel', // babel dependenciweba que foi instalada via npm
-
-        }, {   // configurando o loader para arquivos CSS da aplicação.
-            test: /\.css$/, 
-            exclude: /node_modules/,
-            include: /src/,
-            loader: ExtractTextPlugin.extract('style', 'css')
+            loader: 'babel' // babel dependencia que foi instalada via npm
         }]
     }
 })

@@ -1,6 +1,42 @@
-__M2#A09 - Configuração Webpack _______________________________________________________________________________________________________________________
+__M2#A31 - Configuração Assets CSS _______________________________________________________________________________________________________________________
 
-Raw-Loader -> Loader de CSS 
+Forma de se trabalhar de forma automatica com os assets da aplicação para que os mesmos 
+sejam gerados de forma automatica.
+
+
+Raw-Loader -> Loader de CSS
+irá pegar os arquivos que forem pedidos pra carregar, e os carregará de forma crua. 
     Configurado via webpack para fazer o load de css na aplicação.
 
-npm i --save-dev raw-loader
+npm i --save-dev raw-loader@1
+npm i --=
+
+
+__M2#A32 - Configuração Assets HTML _______________________________________________________________________________________________________________________
+
+Contem a mesma ideia do Asset de CSS, porém para o HTML utilizamos um plugin
+
+fazendo algumas configurações no webpack... esse plugin é o 
+
+npm -i --save-dev html-webpack-plugin
+
+
+__M2#A33 - Exportando CSS em um Arquivo _______________________________________________________________________________________________________________________
+
+Para fazer a exportação devemos utilizar um outro plugin e configurar o webpack...
+
+npm i --save-dev extract-text-webpack-plugin@1
+
+** O raw-loader não tem uma abrangencia tão grande para fazer o carregamento e memoria.
+    Neste caso vamos troca-lo por outra ferramenta chamada CSS Loader
+
+O CSS Loader tem uma compatibilidade para se usar o @import e (url) dentro do nosso arquivo css
+coisa que o raw-loader não nos oferece.
+
+
+npm rm --save-dev raw-loader
+npm i --save-dev css-loader
+
+
+__M2#A34 - Gerar Bundle de Produção _______________________________________________________________________________________________________________________
+
