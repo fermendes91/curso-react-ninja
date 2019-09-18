@@ -1,0 +1,22 @@
+__M2#A32 - Webpack Alias_______________________________________________________________________________________________________________________
+
+Criar um alias para facilitar os imports dos componentes criados.
+
+Pelo webpack utilizamos um objeto resolve { alias: { ... }} que conterá
+
+o alias para um determinado diretorio. ( exemplo )
+
+resolve: {
+    alias: {
+        components: (__dirname, 'src', 'components')
+    }
+}
+
+no caso acima o nosso alias components está apontando para o diretorio 
+
+{raizProjet}/src/components.
+
+no nosso arquivo js... em qualquer lugar que utilizarmos nosso componente só
+devemos apontar agora como o exemplo abaixo:
+
+import UserInfo from 'components/user-info';
