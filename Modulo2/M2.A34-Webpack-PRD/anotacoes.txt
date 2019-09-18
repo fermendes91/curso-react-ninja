@@ -1,0 +1,28 @@
+__M2#A34 - Webpack produção _______________________________________________________________________________________________________________________
+
+Para configurar o webpack de produção não necessitamos de varias configurações já setadas 
+no webpack de desenvolvimento (webpack.config.js).
+
+Porém... temos outras dependencias importantes para o webpack de produção
+para ajudar na performance da aplicação.
+
+
+depois do arquivo ( webpack.prod.config.js ) configurado, podemos gerar um comando no package.json
+chamado build para criar o nosso bundle de produção.
+
+"build": "webpack --progress --config webpack.prod.config -p"
+
+
+__M2#A35 - Webpack dashboard _______________________________________________________________________________________________________________________
+
+O webpack dashboard é uma ferramenta para diminuir o numero de imports que aparecem quando
+se sobe um servidor. Deixando somente o que é necessario visivel para o desenvolvedor.
+
+npm i --save-dev webpack-dashboard
+
+depois de fazer a instalação deste componente é necessario configurado no webpack de desenvolvimento.
+
+e configurar o arquivo package.json para inicializar a aplicação utilizando este recurso
+via script
+
+"start": "webpack-dashboard -- node server.js"
