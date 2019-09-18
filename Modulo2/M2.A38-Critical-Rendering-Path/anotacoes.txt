@@ -1,0 +1,15 @@
+__M2#A38 - Critical Rendering Path _______________________________________________________________________________________________________________________
+
+O critical rendering path é o tempo que o browser demora para construir
+a aplicação...
+
+O browser so faz o load de toda a pagina depois que carrega todos os 
+arquivos necessarios...
+
+Utilizando o CRP podemos carregar o browser em partes, carregando as partes
+mais leves por primeiro... dando ao usuario uma resposta do que esta 
+acontecendo no meio do processo.
+
+não o deixando vendo uma tela branca enquanto a aplicação carrega os dados...
+
+com o CRP a tela vai carregando aos poucos ao termino de cada carga.
