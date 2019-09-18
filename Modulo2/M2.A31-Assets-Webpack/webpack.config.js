@@ -44,7 +44,7 @@ module.exports = validate ({
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(), // com isto a magica do hot-load consegue ser executada
-        new ExtractTextPlugin('style.css'),
+        new ExtractTextPlugin('[name]-[hash].css'),
         new HtmlPlugin({
             title: 'GitHub App',
             template: path.join(__dirname, 'src', 'html', 'template.html')
