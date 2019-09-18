@@ -13,3 +13,21 @@ acontecendo no meio do processo.
 não o deixando vendo uma tela branca enquanto a aplicação carrega os dados...
 
 com o CRP a tela vai carregando aos poucos ao termino de cada carga.
+
+_______________________________________________________________________________________________________________________
+
+Above the fold -> Ponto aonde a aplicação cabe dentro do monitor do usuario.
+
+Uma das tecnicas para melhorar a performance é 
+    separar todo o CSS que carrega no Above the fold e colocar como estilo inline.
+
+
+__M2#A41 - Cross-Env _______________________________________________________________________________________________________________________
+
+Utilizando esta ferramenta podemos alterar o ambiente da nossa aplicação,
+
+quando rodamos um cross-env production no build ( conforme configurado no package.json )
+
+o arquivo vai reduzir ainda mais o seu tamanho.
+
+npm i --save-dev cross-env
