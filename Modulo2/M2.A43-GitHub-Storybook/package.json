@@ -1,8 +1,8 @@
 {
   "scripts": {
     "start": "webpack-dashboard -- node server.js",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006 -c storybook",
+    "build-storybook": "build-storybook -c storybook"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

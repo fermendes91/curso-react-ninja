@@ -1,11 +1,10 @@
 'use strict'
 
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 
 import style from './repositories.css'
 
 const Repositories = ({ className, title, repos }) => (
- 
   <div className={style.repos}>
     <h2>{title}</h2>
     <ul>
@@ -19,7 +18,8 @@ const Repositories = ({ className, title, repos }) => (
 )
 
 Repositories.defaultProps = {
-  className: ''
+  className: '',
+  repos: []
 }
 
 Repositories.propTypes = {

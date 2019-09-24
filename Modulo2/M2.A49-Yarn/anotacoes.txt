@@ -1,0 +1,17 @@
+__M2#A49 - Yarn _______________________________________________________________________________________________________________________
+
+O Yarn é uma alternativa para substituição do NPM para gerenciamento de modulos.
+
+As vantagens de usa-lo ao inves de utilizar o NPM são.
+
+Mais velocidade,
+Faz cache dos pacotes, se precisar instalar em outro projeto reutiliza a instalação.
+
+npm i -g yarn 
+
+Para instalar pacotes utilizando yarn utilizamos o comando
+
+yarn add <package> ( salva automaticamente no package.json )
+yarn install ( mesma coisa que o npm install )
+yarn add --dev <package> ( mesma coisa que o npm instal --save-dev)
+yarn <script> ou yarn run <script> ( mesma coisa que o npm )

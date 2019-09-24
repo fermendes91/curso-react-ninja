@@ -1,22 +1,37 @@
-__M2#A32 - Webpack Alias_______________________________________________________________________________________________________________________
+__M2#A45 - Extendendo o Webpack config padrão _______________________________________________________________________________________________________________________
 
-Criar um alias para facilitar os imports dos componentes criados.
+Para utilizar as configurações padrões do Storybook... podemos utilizar o
+seguinte codigo. este codigo irá importar as configs padrões do webpack...
+e caso seja necessario alterar, ou adicionar qualquer configuração a mais...
+basta fazer como na linha 18... concatenando configs as configs já existentes.
 
-Pelo webpack utilizamos um objeto resolve { alias: { ... }} que conterá
 
-o alias para um determinado diretorio. ( exemplo )
+'use strict'
 
-resolve: {
-    alias: {
-        components: (__dirname, 'src', 'components')
-    }
+const webpackConfig = require('@kadira/storybook/dist/server/config/defaults/webpack.config.js');
+
+module.exports = function(config, env) {
+    const newConfig = webpackConfig(config, env);
+
+    // verifica se já existe preloader, caso não exista cria um array vazio e cria
+    // porque se for undefined vai dar problema para fazer a concacetenção.
+    newConfig.module.preLoaders = (newConfig.module.preLoaders || [] ).concat({
+        test: /\.js$/, 
+        exclude: /node_modules/,
+        include: /src/,
+        loader: 'standard'
+    });
+
+    return newConfig;
 }
 
-no caso acima o nosso alias components está apontando para o diretorio 
+__M2#A45 - Localização do arquivo de config, linter, static build ____________________________________________________________________________________________________
 
-{raizProjet}/src/components.
+para alterar o caminho do arquivo config do storybook precisamos fazer 
+uma alteração no package.json... por default o arquivo padrão é localizado
+atraves do diretorio ".storybook"... configurando no package.json agora o mesmo
+estará localizado no diretorio "storybook"
 
-no nosso arquivo js... em qualquer lugar que utilizarmos nosso componente só
-devemos apontar agora como o exemplo abaixo:
-
-import UserInfo from 'components/user-info';
+  "scripts": {
+    "storybook": "start-storybook -p 6006 -c storybook",
+  }
