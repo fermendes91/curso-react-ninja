@@ -1,10 +1,10 @@
 'use strict'
 
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 
 import style from './user-info.css'
 
-const UserInfo = ( {userInfo} ) => (
+const UserInfo = ({ userInfo }) => (
   <div className={style['user-info']}>
     <img src={userInfo.photo} />
     <h1 className='username'>

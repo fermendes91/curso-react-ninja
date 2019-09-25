@@ -1,0 +1,10 @@
+__M2#A51 - Ambiente para testes - lint _______________________________________________________________________________________________________________________
+
+Para melhorar a visualização de erros do nosso standard "lint", precisamos
+instalar duas dependencias no projeto para melhorar a visualização
+
+yarn add --dev snazzy gulp@3
+
+por padrão o lint não tem um watch para ficar verificando o codigo.
+
+Para isto é instalado o gulp para podermos ter um watch no lint.

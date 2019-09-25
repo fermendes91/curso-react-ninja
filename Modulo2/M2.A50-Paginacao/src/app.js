@@ -5,7 +5,7 @@ import AppContent from './components/app-content'
 import ajax from '@fdaciuk/ajax'
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       userInfo: null,
@@ -14,17 +14,16 @@ class App extends Component {
       isFetching: false
     }
 
-    this.handleSearch = this.handleSearch.bind(this); // forma recomendada pelo react para fazer o bind do THIS na aplicação.
+    this.handleSearch = this.handleSearch.bind(this) // forma recomendada pelo react para fazer o bind do THIS na aplicação.
   }
 
-  getGitHubApiUrl(username, type) {
+  getGitHubApiUrl (username, type) {
     const internalUsername = username ? `/${username}` : ''
     const internalType = type ? `/${type}` : ''
     return `https://api.github.com/users${internalUsername}${internalType}`
   }
 
-  handleSearch(e) {
-
+  handleSearch (e) {
     const value = e.target.value
     const keyCode = e.which || e.keyCode
     const ENTER = 13
@@ -38,7 +37,7 @@ class App extends Component {
 
       // ao utilizar uma requisição assincrona no caso abaixo (ajax), o react anula todo o evento, se tentarmos desabilitar o botao utilizando
       // e.target.disabled no callback não irá funcionar então foi por isso que o target foi atribuido a uma variavel, assim não perdemos o escopo do evento
-      ajax().get(this.getGitHubApiUrl(value)).then((result => {
+      ajax().get(this.getGitHubApiUrl(value)).then(result => {
         target.disabled = false
         this.setState({
           userInfo: {
@@ -54,15 +53,15 @@ class App extends Component {
           isFetching: false
           // limpamos os repositorios a cada chamada de busca.
         })
-      }))
+      })
     }
   }
 
-  handleRepos(type) {
+  handleRepos (type) {
     return (e) => {
       const login = this.state.userInfo.login
 
-      ajax().get(this.getGitHubApiUrl(login, type)).then((result => {
+      ajax().get(this.getGitHubApiUrl(login, type)).then(result => {
         this.setState({
           [type]: result.map((repo) => ({
             name: repo.name,
@@ -71,21 +70,20 @@ class App extends Component {
         }, () => { // como o setState é assincrono, ao terminar de popular o novo array, fiz um console do novo array criado
           console.log(this.state.repos)
         })
-      }))
+      })
     }
   }
 
-  render() {
-
+  render () {
     // spread-operator com array --> lembrando que o spread-operator separa os objetos, ou itens do array.
     const arr = [1, 2, 3]
 
-    function sum(x, y, z) {
+    function sum (x, y, z) {
       return x + y + z
     }
 
     let soma = sum(...arr)
-    console.log('TEST USING SPREAD OPERATOR: ' + soma);
+    console.log('TEST USING SPREAD OPERATOR: ' + soma)
 
     return (
       <AppContent
