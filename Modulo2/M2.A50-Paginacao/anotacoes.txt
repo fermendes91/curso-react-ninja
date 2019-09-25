@@ -8,3 +8,15 @@ yarn add --dev snazzy gulp@3
 por padrão o lint não tem um watch para ficar verificando o codigo.
 
 Para isto é instalado o gulp para podermos ter um watch no lint.
+
+__M2#A52 - Implementação inicial _______________________________________________________________________________________________________________________
+
+Para que o standard não considere na sua validação as funções do chai
+
+test, it e describe, devemos configurar no package.json esta definição.
+
+
+Importante que jest-cli e babel-jest estejam na versão 15 para que os testes
+executem na versão correta
+
+yarn add  --dev jest-cli@15 babel-jest@15
