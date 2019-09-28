@@ -4,26 +4,32 @@ import React, { Component } from 'react'
 import AppContent from './components/app-content'
 import ajax from '@fdaciuk/ajax'
 
+const initialReposState = {
+  repos: [],
+  pagination: {}
+}
+
 class App extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       userInfo: null,
-      repos: [],
-      starred: [],
+      repos: initialReposState,
+      starred: initialReposState,
       isFetching: false
     }
 
+    this.perPage = 3;
     this.handleSearch = this.handleSearch.bind(this) // forma recomendada pelo react para fazer o bind do THIS na aplicação.
   }
 
-  getGitHubApiUrl (username, type) {
+  getGitHubApiUrl(username, type, page = 1) {
     const internalUsername = username ? `/${username}` : ''
     const internalType = type ? `/${type}` : ''
-    return `https://api.github.com/users${internalUsername}${internalType}`
+    return `https://api.github.com/users${internalUsername}${internalType}?per_page=${this.perPage}&page=${page}`
   }
 
-  handleSearch (e) {
+  handleSearch(e) {
     const value = e.target.value
     const keyCode = e.which || e.keyCode
     const ENTER = 13
@@ -48,8 +54,8 @@ class App extends Component {
             followers: result.followers,
             following: result.following
           },
-          repos: [],
-          starred: [],
+          repos: initialReposState,
+          starred: initialReposState,
           isFetching: false
           // limpamos os repositorios a cada chamada de busca.
         })
@@ -57,28 +63,29 @@ class App extends Component {
     }
   }
 
-  handleRepos (type) {
+  getRepos(type, page) {
     return (e) => {
       const login = this.state.userInfo.login
 
-      ajax().get(this.getGitHubApiUrl(login, type)).then(result => {
+      ajax().get(this.getGitHubApiUrl(login, type, page)).then(result => {
         this.setState({
-          [type]: result.map((repo) => ({
-            name: repo.name,
-            link: repo.html_url
-          }))
+          [type]: {
+            repos: result.map((repo) => ({
+              name: repo.name,
+              link: repo.html_url
+            })),
+            pagination: this.state[type].pagination
+          }
         }, () => { // como o setState é assincrono, ao terminar de popular o novo array, fiz um console do novo array criado
           console.log(this.state.repos)
         })
       })
+        .always(() => this.setState({ isFetching: false }))
     }
   }
 
-  render () {
-    // spread-operator com array --> lembrando que o spread-operator separa os objetos, ou itens do array.
-    const arr = [1, 2, 3]
-
-    function sum (x, y, z) {
+  render() {
+    function sum(x, y, z) {
       return x + y + z
     }
 
@@ -86,8 +93,9 @@ class App extends Component {
       <AppContent
         {...this.state} // spread-operator separa as propriedades do objeto, no caso estamos utilizando o spread operator dentro de um objeto para clonar um objeto.
         handleSearch={this.handleSearch}
-        handleRepos={this.handleRepos('repos')}
-        handleStarred={this.handleRepos('starred')}
+        getRepos={this.getRepos('repos')}
+        getStarred={this.getRepos('starred')}
+        handlePagination={(type, page) => this.getRepos(type, page)()}
       />
     )
   }

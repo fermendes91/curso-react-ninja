@@ -13,22 +13,31 @@ const AppContent = ({
   starred,
   isFetching,
   handleSearch,
-  handleRepos,
-  handleStarred
+  getRepos,
+  getStarred,
+  handlePagination
 }) => (
   <div className='app'>
     <Search handleSearch={handleSearch} isDisabled={isFetching} />
     {isFetching && <div>Carregando...</div>}
     {!!userInfo && <UserInfo userInfo={userInfo} />}
-    {!!userInfo && <Actions handleRepos={handleRepos} handleStarred={handleStarred} />}
+    {!!userInfo && <Actions getRepos={getRepos} getStarred={getStarred} />}
 
     <div className='repos-container'>
-      {!!repos.length && // converte para um booleano, porque 0 é considerado conteudo valido então caso for 0 então será renderizado do mesmo jeito.
-      <Repositories className='repos' title='Repositorios' repos={repos} />
+      {!!repos.repos.length && // converte para um booleano, porque 0 é considerado conteudo valido então caso for 0 então será renderizado do mesmo jeito.
+      <Repositories 
+        className='repos' 
+        title='Repositorios' 
+        repos={repos} 
+        handlePagination={(clicked) => handlePagination('repos', clicked) } />
       }
 
-      {!!starred.length &&
-      <Repositories className='starred' title='Favoritos' repos={starred} />
+      {!!starred.repos.length &&
+      <Repositories 
+        className='starred' 
+        title='Favoritos' 
+        repos={starred} 
+        handlePagination = {(clicked) => handlePagination('starred', clicked)} />
       }
     </div>
 
@@ -37,12 +46,13 @@ const AppContent = ({
 
 AppContent.propTypes = {
   userInfo: PropTypes.object,
-  repos: PropTypes.array.isRequired,
-  starred: PropTypes.array.isRequired,
+  repos: PropTypes.object.isRequired,
+  starred: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleSearch: PropTypes.func.isRequired,
-  handleRepos: PropTypes.func.isRequired,
-  handleStarred: PropTypes.func.isRequired
+  getRepos: PropTypes.func.isRequired,
+  getStarred: PropTypes.func.isRequired,
+  handlePagination: PropTypes.func.isRequired
 }
 
 export default AppContent

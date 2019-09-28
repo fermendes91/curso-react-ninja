@@ -9,7 +9,7 @@ const stories = storiesOf('Actions', module)
 
 stories.add('Actions component', () => (
   <Actions
-    handleRepos={action('Get Repos')}
-    handleStarred={action('Get Starred')}
+    getRepos={action('Get Repos')}
+    getStarred={action('Get Starred')}
   />
 ))

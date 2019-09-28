@@ -13,7 +13,7 @@ const Page = ({ page, pageLink, onClick }) => {
   }
 
   return (
-    <Component className='pagination-link 'href={pageLink} onClick={handleClick} >
+    <Component className='pagination-link' href={pageLink} onClick={handleClick} >
       {page}
     </Component>
   )

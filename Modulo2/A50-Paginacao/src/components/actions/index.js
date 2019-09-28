@@ -4,10 +4,10 @@ import React from 'react'
 
 import './actions.css'
 
-const Actions = ({ handleRepos, handleStarred }) => (
+const Actions = ({ getRepos, getStarred }) => (
   <div className='actions'>
-    <button onClick={handleRepos}>Ver repositorios</button>
-    <button onClick={handleStarred}>Ver favoritos</button>
+    <button onClick={getRepos}>Ver repositorios</button>
+    <button onClick={getStarred}>Ver favoritos</button>
   </div>
 )
 
