@@ -2,14 +2,23 @@
 
 import React from 'react'
 
-const Page = ({ page, pageLink }) => {
-  pageLink = pageLink.replace('%page%', page);
+const Dots = () => <span>...</span>
 
-  const Component = page === '...' ? 'span' : 'a'
-  const href = page === '...' ? null : pageLink
+const Page = ({ page, pageLink, onClick }) => {
+  const Component = page === '...' ? Dots : 'a'
+
+  const handleClick = !onClick ? null : (e) => {
+    e.preventDefault();
+    onClick(page)
+  }
 
   return (
-    <Component href={href}>{page}</Component>
+    <Component 
+      href={pageLink} 
+      onClick={handleClick}
+    >
+    {page}
+    </Component>
   )
 }
 
