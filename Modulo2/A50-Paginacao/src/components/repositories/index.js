@@ -2,10 +2,10 @@
 
 import React, { PropTypes } from 'react'
 
-import style from './repositories.css'
+import './repositories.css'
 
 const Repositories = ({ className, title, repos }) => (
-  <div className={style.repos}>
+  <div className={`repos-list-container ${className}`}>
     <h2>{title}</h2>
     <ul>
       {repos.map((repo, index) => (

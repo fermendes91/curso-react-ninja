@@ -1,5 +1,10 @@
 @charset 'utf-8';
 
+.repos-list-container {
+  max-width: 50%;
+  padding-right: 30px;
+}
+
 .actions,
 .repos,
 .starred {

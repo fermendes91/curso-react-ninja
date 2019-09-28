@@ -2,10 +2,10 @@
 
 import React, { PropTypes } from 'react'
 
-import style from './user-info.css'
+import './user-info.css'
 
 const UserInfo = ({ userInfo }) => (
-  <div className={style['user-info']}>
+  <div className='user-info'>
     <img src={userInfo.photo} />
     <h1 className='username'>
       {/* Abaixo estamos usando interpolação de strings */}
@@ -14,7 +14,7 @@ const UserInfo = ({ userInfo }) => (
       </a>
     </h1>
 
-    <ul className={style['repos-info']}>
+    <ul className='repos-info'>
       <li>Repositorios: {userInfo.repos}</li>
       <li>Seguidores: {userInfo.followers}</li>
       <li> Seguindo: {userInfo.following}</li>
