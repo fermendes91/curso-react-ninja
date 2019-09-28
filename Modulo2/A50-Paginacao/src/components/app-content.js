@@ -22,13 +22,16 @@ const AppContent = ({
     {!!userInfo && <UserInfo userInfo={userInfo} />}
     {!!userInfo && <Actions handleRepos={handleRepos} handleStarred={handleStarred} />}
 
-    {!!repos.length && // converte para um booleano, porque 0 é considerado conteudo valido então caso for 0 então será renderizado do mesmo jeito.
-    <Repositories className='repos' title='Repositorios' repos={repos} />
-    }
+    <div className='repos-container'>
+      {!!repos.length && // converte para um booleano, porque 0 é considerado conteudo valido então caso for 0 então será renderizado do mesmo jeito.
+      <Repositories className='repos' title='Repositorios' repos={repos} />
+      }
 
-    {!!starred.length &&
-    <Repositories className='starred' title='Favoritos' repos={starred} />
-    }
+      {!!starred.length &&
+      <Repositories className='starred' title='Favoritos' repos={starred} />
+      }
+    </div>
+
   </div>
 )
 

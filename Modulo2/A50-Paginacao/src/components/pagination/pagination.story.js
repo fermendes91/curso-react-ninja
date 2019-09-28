@@ -15,18 +15,18 @@ stories.add('with total and activePage', () => (
 ))
 
 stories.add('with page link', () => (
-  <Pagination 
-    total={9} 
-    activePage={4} 
-    pageLink={'http://mypage.com/page/%page%'} 
+  <Pagination
+    total={9}
+    activePage={4}
+    pageLink={'http://mypage.com/page/%page%'}
   />
 ))
 
 stories.add('with callback', () => (
-  <Pagination 
-    total={15} 
-    activePage={9} 
-    pageLink={'http://mypage.com/page/%page%'} 
+  <Pagination
+    total={15}
+    activePage={9}
+    pageLink={'http://mypage.com/page/%page%'}
     onClick={(page) => {
       window.alert(page)
     }}

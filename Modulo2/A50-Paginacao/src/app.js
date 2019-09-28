@@ -82,9 +82,6 @@ class App extends Component {
       return x + y + z
     }
 
-    let soma = sum(...arr)
-    console.log('TEST USING SPREAD OPERATOR: ' + soma)
-
     return (
       <AppContent
         {...this.state} // spread-operator separa as propriedades do objeto, no caso estamos utilizando o spread operator dentro de um objeto para clonar um objeto.
