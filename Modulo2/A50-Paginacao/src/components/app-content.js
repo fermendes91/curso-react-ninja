@@ -44,10 +44,15 @@ const AppContent = ({
   </div>
 )
 
+const reposPropTypesShape = {
+  repos: PropTypes.array.isRequired,
+  pagination: PropTypes.object
+}
+
 AppContent.propTypes = {
   userInfo: PropTypes.object,
-  repos: PropTypes.object.isRequired,
-  starred: PropTypes.object.isRequired,
+  repos: PropTypes.shape(reposPropTypesShape).isRequired,
+  starred: PropTypes.shape(reposPropTypesShape).isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleSearch: PropTypes.func.isRequired,
   getRepos: PropTypes.func.isRequired,

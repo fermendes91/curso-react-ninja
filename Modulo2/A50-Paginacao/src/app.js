@@ -6,7 +6,10 @@ import ajax from '@fdaciuk/ajax'
 
 const initialReposState = {
   repos: [],
-  pagination: {}
+  pagination: {
+    total: 1,
+    activePage: 1
+  }
 }
 
 class App extends Component {
@@ -67,17 +70,30 @@ class App extends Component {
     return (e) => {
       const login = this.state.userInfo.login
 
-      ajax().get(this.getGitHubApiUrl(login, type, page)).then(result => {
+      ajax().get(this.getGitHubApiUrl(login, type, page)).then( (result, xhr) => {
+        const linkHeader = xhr.getResponseHeader('Link') || ''
+        const totalPagesMatch = linkHeader.match(/&page=(\d+)>; rel="last/)
+
+        debugger;
+        console.log('this.state[type]')
+        console.log(this.state[type])
+
+        console.log('\nthis.state[type].pagination')
+        console.log(this.state[type].pagination)
+
         this.setState({
           [type]: {
             repos: result.map((repo) => ({
               name: repo.name,
               link: repo.html_url
             })),
-            pagination: this.state[type].pagination
+            pagination: {
+              total: totalPagesMatch ? +totalPagesMatch[1] : this.state[type].pagination.total,
+              activePage: page
+            }
           }
         }, () => { // como o setState é assincrono, ao terminar de popular o novo array, fiz um console do novo array criado
-          console.log(this.state.repos)
+          console.log("State assincrono.")
         })
       })
         .always(() => this.setState({ isFetching: false }))
