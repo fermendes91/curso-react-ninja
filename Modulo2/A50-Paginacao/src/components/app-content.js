@@ -25,19 +25,19 @@ const AppContent = ({
 
     <div className='repos-container'>
       {!!repos.repos.length && // converte para um booleano, porque 0 é considerado conteudo valido então caso for 0 então será renderizado do mesmo jeito.
-      <Repositories 
-        className='repos' 
-        title='Repositorios' 
-        repos={repos} 
-        handlePagination={(clicked) => handlePagination('repos', clicked) } />
+      <Repositories
+        className='repos'
+        title='Repositorios'
+        repos={repos}
+        handlePagination={(clicked) => handlePagination('repos', clicked)} />
       }
 
       {!!starred.repos.length &&
-      <Repositories 
-        className='starred' 
-        title='Favoritos' 
-        repos={starred} 
-        handlePagination = {(clicked) => handlePagination('starred', clicked)} />
+      <Repositories
+        className='starred'
+        title='Favoritos'
+        repos={starred}
+        handlePagination={(clicked) => handlePagination('starred', clicked)} />
       }
     </div>
 

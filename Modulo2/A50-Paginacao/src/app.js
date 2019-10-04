@@ -13,7 +13,7 @@ const initialReposState = {
 }
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       userInfo: null,
@@ -22,17 +22,17 @@ class App extends Component {
       isFetching: false
     }
 
-    this.perPage = 3;
+    this.perPage = 3
     this.handleSearch = this.handleSearch.bind(this) // forma recomendada pelo react para fazer o bind do THIS na aplicação.
   }
 
-  getGitHubApiUrl(username, type, page = 1) {
+  getGitHubApiUrl (username, type, page = 1) {
     const internalUsername = username ? `/${username}` : ''
     const internalType = type ? `/${type}` : ''
     return `https://api.github.com/users${internalUsername}${internalType}?per_page=${this.perPage}&page=${page}`
   }
 
-  handleSearch(e) {
+  handleSearch (e) {
     const value = e.target.value
     const keyCode = e.which || e.keyCode
     const ENTER = 13
@@ -66,11 +66,11 @@ class App extends Component {
     }
   }
 
-  getRepos(type, page) {
+  getRepos (type, page) {
     return (e) => {
       const login = this.state.userInfo.login
 
-      ajax().get(this.getGitHubApiUrl(login, type, page)).then( (result, xhr) => {
+      ajax().get(this.getGitHubApiUrl(login, type, page)).then((result, xhr) => {
         const linkHeader = xhr.getResponseHeader('Link') || ''
         const totalPagesMatch = linkHeader.match(/&page=(\d+)>; rel="last/)
 
@@ -86,18 +86,14 @@ class App extends Component {
             }
           }
         }, () => { // como o setState é assincrono, ao terminar de popular o novo array, fiz um console do novo array criado
-          console.log("State assincrono.")
+          console.log('State assincrono.')
         })
       })
         .always(() => this.setState({ isFetching: false }))
     }
   }
 
-  render() {
-    function sum(x, y, z) {
-      return x + y + z
-    }
-
+  render () {
     return (
       <AppContent
         {...this.state} // spread-operator separa as propriedades do objeto, no caso estamos utilizando o spread operator dentro de um objeto para clonar um objeto.
