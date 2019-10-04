@@ -74,13 +74,6 @@ class App extends Component {
         const linkHeader = xhr.getResponseHeader('Link') || ''
         const totalPagesMatch = linkHeader.match(/&page=(\d+)>; rel="last/)
 
-        debugger;
-        console.log('this.state[type]')
-        console.log(this.state[type])
-
-        console.log('\nthis.state[type].pagination')
-        console.log(this.state[type].pagination)
-
         this.setState({
           [type]: {
             repos: result.map((repo) => ({
