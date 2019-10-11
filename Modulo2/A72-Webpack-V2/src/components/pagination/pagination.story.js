@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import { storiesOf } from '@kadira/storybook'
+import { storiesOf } from '@storybook/react'
 import Pagination from './index'
 
 const stories = storiesOf('<Pagination />', module)

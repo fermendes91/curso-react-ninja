@@ -1,4 +1,0 @@
-__ Aula 72 - WEBPACK V2 ____________________________________________________________________________________
-
-Boilerplate para produção de componentes em react, atualizando a nossa aplicação de webpack 1 
-para a versão de webpack 2.

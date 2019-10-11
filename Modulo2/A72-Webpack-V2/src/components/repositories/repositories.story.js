@@ -1,6 +1,6 @@
 'use strict'
 
-import { storiesOf } from '@kadira/storybook'
+import { storiesOf } from '@storybook/react'
 import React from 'react'
 import Repositories from './index'
 
