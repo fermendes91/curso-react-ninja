@@ -1,0 +1,9 @@
+__M2#A77 - Promises _______________________________________________________________________________________________________________________
+
+Promises vai executar algum codigo assincrono e devolve algum resultado (uma promessa)
+
+__M2#A78 - Clean webpack plugin _______________________________________________________________________________________________________________________
+
+Plugin para deletar a pasta dist para build que for executado.
+
+yarn add --dev clean-webpack-plugin
