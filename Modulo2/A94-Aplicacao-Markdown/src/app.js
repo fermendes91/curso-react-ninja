@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import './css/style.css'
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super()
 
     this.state = {
@@ -14,28 +14,19 @@ class App extends Component {
 
     this.handleSubmit = (e) => {
       e.preventDefault()
-      
+
       this.setState({
         value: e.target.textarea.value
       })
     }
-
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    
-    this.setState({
-      value: e.target.textarea.value
-    })
-  }
-
-  render() {
+  render () {
     return (
       <div className='editor'>
         <form onSubmit={this.handleSubmit}>
           <textarea name='textarea' />
-          <button type="submit">Renderizar markup</button>
+          <button type='submit'>Renderizar markup</button>
         </form>
 
         <div className='view' >
@@ -43,8 +34,6 @@ class App extends Component {
         </div>
       </div>
     )
-
   }
-
 }
 export default App
