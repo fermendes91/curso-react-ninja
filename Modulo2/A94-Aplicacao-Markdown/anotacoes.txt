@@ -1,6 +1,27 @@
-﻿__M2#A72 - Webpack V2 _______________________________________________________________________________________________________________________
+﻿__M2#A96 - Renderizando HTML _______________________________________________________________________________________________________________________
 
-Este é um projeto boilerplate, para desenvolvimento react.
+Para renderizar html no react devemos
 
-Não contem conteudo de aprendizagem somente um workspace para iniciarmos nosso desenvolvimento react
-utilizando o Webpack na versão 2.
+colocar a propriedade na div  a propriedade dangerouslySetInnerHTML={ {__html: '<h1>Titulo</h1>'}}
+
+aonde no objeto __html: contera o conteudo a ser renderizado via html
+
+
+***********
+
+Para normalizar o CSS podemos instalar uma dependencia chamada normalize
+yarn add normalize.css
+
+__M2#A98 - Adicionando opção de markdown no editor _______________________________________________________________________________________________________________________
+
+Markdown é uma forma de escrever HTML ( tags ) de forma mais simples...
+
+para a nossa aplicação podemos utilizar a dependencia ( marked )
+
+yarn add marked
+
+__M2#A99 - Adicionando opção de highlight no editor _______________________________________________________________________________________________________________________
+
+para marcarmos os nossos blocos de codigo da aplicação podemos utilizar a dependencia ( highlight.js )
+
+yarn add highlight.js

@@ -5,7 +5,9 @@ const { join } = require('path')
 const paths = {
   root: join(__dirname, '..'),
   src: join(__dirname, '..', 'src'),
-  dist: join(__dirname, '..', 'dist')
+  dist: join(__dirname, '..', 'dist'),
+  normalizeCss: join(__dirname, '..', 'node_modules', 'normalize.css'),
+  highlightJs: join(__dirname, '..', 'node_modules', 'highlight.js', 'styles')
 }
 
 module.exports = {
@@ -17,8 +19,7 @@ module.exports = {
 
   output: {
     path: paths.dist,
-    filename: '[name]-[chunkhash].js',
-    publicPath: '/'
+    filename: '[name]-[chunkhash].js'
   },
 
   htmlPluginConfig: {
@@ -41,11 +42,13 @@ module.exports = {
   jsLoader: {
     test: /\.js$/,
     include: paths.src,
-    use: ['react-hot-loader/webpack', {
+    use: {
       loader: 'babel-loader',
       options: {
+        babelrc: false,
         presets: [['env', { modules: false }], 'stage-0', 'react'],
         plugins: [
+          'react-hot-loader/babel',
           ['transform-runtime', {
             helpers: false,
             polyfill: false,
@@ -53,12 +56,12 @@ module.exports = {
           }]
         ]
       }
-    }]
+    }
   },
 
   cssLoader: {
     test: /\.css$/,
-    include: paths.src,
+    include: [paths.src, paths.normalizeCss, paths.highlightJs],
     use: ['style-loader', 'css-loader']
   },
 
@@ -85,11 +88,16 @@ module.exports = {
     }
   },
 
+  module: {
+    noParse: /\.min\.js$/
+  },
+
   resolve: {
     alias: {
       src: paths.src,
       components: join(paths.src, 'components'),
-      utils: join(paths.src, 'utils')
+      utils: join(paths.src, 'utils'),
+      views: join(paths.src, 'views')
     }
   }
 }
