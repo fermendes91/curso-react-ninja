@@ -16,4 +16,4 @@ MarkdownEditor.propTypes = {
   handleChange: PropTypes.func.isRequired
 }
 
-export default MarkdownEditor;
+export default MarkdownEditor

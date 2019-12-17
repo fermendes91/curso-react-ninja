@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import marked from 'marked'
-import hljs from 'highlight.js'
 
 import MarkdownEditor from './markdown-editor'
 
@@ -10,11 +9,16 @@ import 'normalize.css'
 import 'highlight.js/styles/dracula.css'
 import './css/style.css'
 
-marked.setOptions({
-  highlight: (code) => {
-    console.log(code)
-    return hljs.highlightAuto(code).value
-  }
+// importando de forma assincrona deixa a renderização da aplicação mais rapida.
+import('highlight.js').then((hljs) => {
+  marked.setOptions({
+    highlight: (code, lang) => {
+      if (lang && hljs.getLanguage(lang)) {
+        return hljs.highlight(lang, code).value
+      }
+      return hljs.highlightAuto(code).value
+    }
+  })
 })
 
 class App extends Component {
@@ -29,12 +33,11 @@ class App extends Component {
     this.getMarkup = () => {
       return { __html: marked(this.state.value) }
     }
-  
   }
 
   render () {
     return (
-      <MarkdownEditor 
+      <MarkdownEditor
         value={this.state.value}
         handleChange={this.handleChange}
         getMarkup={this.getMarkup}
