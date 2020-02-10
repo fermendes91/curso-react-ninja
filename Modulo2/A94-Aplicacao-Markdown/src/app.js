@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import marked from 'marked'
 
-import MarkdownEditor from './components/markdown-editor'
+import MarkdownEditor from 'components/markdown-editor'
 
 import 'normalize.css'
 import 'highlight.js/styles/dracula.css'
@@ -26,7 +26,7 @@ class App extends Component {
     super()
     this.state = { 
       value: '',
-      isSaving: false 
+      isSaving: null 
     }
 
     this.handleChange = (e) => {
@@ -51,6 +51,16 @@ class App extends Component {
       localStorage.removeItem('md')
       this.setState({ value: '' })
     }
+
+    this.handleCreate = () => {
+      this.setState({ value: '' })
+      this.textarea.focus();
+
+    }
+
+    this.textareaRef = (node) => {
+      this.textarea = node;
+    }
   }
 
   componentDidMount () {
@@ -74,7 +84,9 @@ class App extends Component {
         isSaving={this.state.isSaving}
         handleChange={this.handleChange}
         handleRemove={this.handleRemove}
+        handleCreate={this.handleCreate}
         getMarkup={this.getMarkup}
+        textareaRef={this.textareaRef}
       />
     )
   }
