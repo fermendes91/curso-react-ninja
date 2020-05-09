@@ -1,0 +1,6 @@
+﻿__M2#A72 - Webpack V2 _______________________________________________________________________________________________________________________
+
+Este é um projeto boilerplate, para desenvolvimento react.
+
+Não contem conteudo de aprendizagem somente um workspace para iniciarmos nosso desenvolvimento react
+utilizando o Webpack na versão 2.
