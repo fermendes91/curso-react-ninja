@@ -51,7 +51,6 @@ class App extends Component {
 
     this.handleSave = () => {
       if (this.state.isSaving) {
-
         const files = {
           ...this.state.files,
           [this.state.id]: {
@@ -61,9 +60,9 @@ class App extends Component {
         }
 
         localStorage.setItem('markdown-editor', JSON.stringify(files))
-        this.setState({ 
+        this.setState({
           files,
-          isSaving: false 
+          isSaving: false
         })
       }
     }
@@ -74,10 +73,9 @@ class App extends Component {
     }
 
     this.handleRemove = () => {
-
       // removendo utilizando ES6
       const { [this.state.id]: id, ...files } = this.state.files
-     
+
       localStorage.setItem('markdown-editor', JSON.stringify(files))
       this.setState({files})
       this.createNew()
@@ -115,7 +113,6 @@ class App extends Component {
   }
 
   render () {
-    
     return (
       <MarkdownEditor
         value={this.state.value}

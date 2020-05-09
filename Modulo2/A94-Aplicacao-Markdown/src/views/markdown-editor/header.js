@@ -7,7 +7,7 @@ import SaveMessage from 'components/save-message'
 
 const MarkdownEditorHeader = ({ title, isSaving, handleRemove, handleCreate, handleChange }) => (
   <header className='editor-header'>
-    
+
     <SaveMessage isSaving={isSaving} />
 
     <input type='text' value={title} onChange={handleChange('title')} placeholder='Insira um Titulo' />
