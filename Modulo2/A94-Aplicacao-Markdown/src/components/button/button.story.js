@@ -11,16 +11,16 @@ stories.addDecorator((story) => (
   <div style={{display: 'flex', height: 40 }}>
     {story}
   </div>
-)) 
+))
 
 stories.add('Button success', () => (
-    <Button onClick={ action('success') } kind='success'>
+  <Button onClick={action('success')} kind='success'>
       Success
     </Button>
 ))
 
 stories.add('Button danger', () => (
-  <Button onClick={ action('danger') } kind='danger'>
+  <Button onClick={action('danger')} kind='danger'>
     Danger
   </Button>
 ))

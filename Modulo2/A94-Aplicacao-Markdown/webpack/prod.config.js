@@ -64,6 +64,7 @@ module.exports = {
   ),
 
   module: {
+    noParse: /\.min\.js$/,
     rules: [
       common.standardPreLoader,
       common.jsLoader,
